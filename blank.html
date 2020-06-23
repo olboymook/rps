@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+        <body>
+            <script>
+
+                const options = ['rock', 'paper', 'scissors']
+                const computerPlay= () => {
+                    let computerChoice = Math.floor(Math.random() * 3);
+                    return options[computerChoice];
+                }
+
+                const playRound = (playerSelection, computerSelection) => {
+            //Switch case for each playerSelection
+                if(playerSelection === 'rock') {
+                switch(computerSelection) {
+                    case 'paper':
+                        return {
+                            winner: 'Computer',
+                            message: "You Lose! Paper beats Rock."
+                        }
+                    case 'scissors':
+                        return {
+                            winner: 'Player',
+                            message: "You Win! Rock beats Scissors."
+                        }
+                    default:
+                        return {
+                            winner: 'Draw',
+                            message: "Draw. You both chose Rock."
+                        }
+                }
+            }
+                else if(playerSelection === 'paper') {
+                switch(computerSelection) {
+                    case 'scissors':
+                        return {
+                            winner: 'Computer',
+                            message: "You Lose! Scissors beats Paper."
+                        }
+                    case 'rock':
+                        return {
+                            winner: 'Player',
+                            message: "You Win! Paper beats Rock."
+                        }
+                    default:
+                        return {
+                            winner: 'Draw',
+                            message: "Draw. You both chose Paper."
+                        }
+                }
+            }
+                else if(playerSelection === 'scissors') {
+                switch(computerSelection) {
+                    case 'paper':
+                        return {
+                            winner: 'Player',
+                            message: "You Win! Scissors beats Paper."
+                        }
+                    case 'rock':
+                        return {
+                            winner: 'Computer',
+                            message: "You Lose! Rock beats Scissors."
+                        }
+                    default:
+                        return {
+                            winner: 'Draw',
+                            message: "Draw. You both chose Scissors."
+                        }
+                }
+            }
+            
+            const getPlayerInput = () => {
+                let PlayerInput = '';
+                while(!playerInput || playerInput.trim().length === 0 || !options.includes(playerInput.toLowerCase())) {
+                    playerInput = prompt("Please enter either 'Rock', 'Paper', or 'Scissors'");
+                }
+            }
+
+
+            </script>
+        </body>
+</html>
