@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-        <body>
+    <body>
             <script>
 
                 const options = ['rock', 'paper', 'scissors']
@@ -10,7 +10,6 @@
                 }
 
                 const playRound = (playerSelection, computerSelection) => {
-            //Switch case for each playerSelection
                 if(playerSelection === 'rock') {
                 switch(computerSelection) {
                     case 'paper':
@@ -28,8 +27,10 @@
                             winner: 'Draw',
                             message: "Draw. You both chose Rock."
                         }
+                
                 }
             }
+                
                 else if(playerSelection === 'paper') {
                 switch(computerSelection) {
                     case 'scissors':
@@ -68,15 +69,46 @@
                         }
                 }
             }
+                }
             
             const getPlayerInput = () => {
-                let PlayerInput = '';
+                let playerInput = '';
                 while(!playerInput || playerInput.trim().length === 0 || !options.includes(playerInput.toLowerCase())) {
                     playerInput = prompt("Please enter either 'Rock', 'Paper', or 'Scissors'");
                 }
+                return playerInput.toLowerCase();
             }
 
+            const game = () => {
+                let i = 0;
+                let playersScore = 0;
+                let computerScore = 0;
+                let numberOfDraws = 0;
+                while(i < 5) {
+                    let playerChoice = getPlayerInput()
+                    
+                    let result = playRound(playerChoice, computerPlay());
+
+                    if(result.winner === 'Player') {
+                        console.log(result.message);
+                        playersScore++;
+                    }
+                    else if(result.winner === 'Computer') {
+                        console.log(result.message);
+                        computerScore++;
+                    }
+                    else {
+                        console.log(result.message);
+                        numberOfDraws++;
+                    }
+
+                    i++;
+                }
+                playersScore === computerScore ? console.log("Draw. Try again.") : playerScore > computerScore ? console.log(`Congratulations! You beat the computer! Score: ${playersScore} - ${computerScore} - ${numberOfDraws}`) : console.log(`Sorry, you have lost! ${playersScore} - ${computerScore} - ${numberOfDraws}`)
+            }
+
+            game()
 
             </script>
-        </body>
+    </body>
 </html>
